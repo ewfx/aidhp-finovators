@@ -51,21 +51,23 @@ def generate_summary(custid):
         )
 
         # Compact transaction summary (last 2)
-        transactions = transaction_history_df.loc[[custid]].tail(2)
-        if not transactions.empty:
+        transaction_rows = transaction_history_df.loc[[custid]]
+        if not transaction_rows.empty:
             transaction_summary = "; ".join(
-                f"{row['Category']} of ${row['Amount ($)']} ({row['Purchase_Date']})"
-                for _, row in transactions.iterrows()
+                f"{row['Category']} of ${row['Amount ($)']} on {row['Purchase_Date']}"
+                for _, row in transaction_rows.iterrows()
             )
-            base_summary += f" Recent transactions: {transaction_summary}."
+            base_summary += f" Transaction history: {transaction_summary}."
 
-        # Compact social media summary (last 1)
-        social_media = social_media_df.loc[[custid]].tail(1)
-        if not social_media.empty:
-            sentiment_summary = ", ".join(
-                social_media.apply(lambda row: f"{row['Content']} ({row['Intent']})", axis=1).tolist()
+        # Social media sentiment summary (ALL interactions)
+        social_media_rows = social_media_df.loc[[custid]]
+        if not social_media_rows.empty:
+            sentiment_summary = "; ".join(
+                f"Post: '{row['Content']}' ({row['Intent']})"
+                for _, row in social_media_rows.iterrows()
             )
-            base_summary += f" Social media activity: {sentiment_summary}."
+            base_summary += f" Social media interactions: {sentiment_summary}."
+
 
         # Return the generated summary
         return base_summary
