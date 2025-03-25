@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# 🚀 Project Name - Finovator
 
 ## 📌 Table of Contents
 - [Introduction](#introduction)
