@@ -1,7 +1,7 @@
 import { ChatInput } from "@/components/custom/chatinput";
 import { PreviewMessage, ThinkingMessage } from "../../components/custom/message";
 import { useScrollToBottom } from '@/components/custom/use-scroll-to-bottom';
-import { useState, useRef } from "react";
+import { useState, useRef,useEffect } from "react";
 import { message } from "../../interfaces/interfaces"
 import { Overview } from "@/components/custom/overview";
 import { Header } from "@/components/custom/header";
@@ -23,6 +23,42 @@ export function Chat() {
       messageHandlerRef.current = null;
     }
   };
+  const handleOnSubmit = async(text?: string) => { 
+    const resp = await fetch("http://127.0.0.1:5000/get-offers", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				custid: "CUST2025A0",
+				user_input: text,
+			}),
+		});
+    const data = await resp.json();
+    console.log(data);
+    return data;
+  }
+
+  const handleOnLoad = async () => { 
+    const resp = await fetch("http://127.0.0.1:5000/preload-summary", {
+			method: "POST",
+			headers: {
+        "Content-Type": "application/json",
+        // "Access-Control-Allow-Origin:": "*"
+			},
+			body: JSON.stringify({
+				custid: "CUST2025A0",
+			}),
+		});
+    const data = await resp.json();
+    console.log(data);
+  }
+  useEffect(() => {
+    handleOnLoad();
+
+  }, [])
+  
+
 
 async function handleSubmit(text?: string) {
   if (!socket || socket.readyState !== WebSocket.OPEN || isLoading) return;
@@ -83,7 +119,7 @@ async function handleSubmit(text?: string) {
         <ChatInput  
           question={question}
           setQuestion={setQuestion}
-          onSubmit={handleSubmit}
+          onSubmit={handleOnSubmit}
           isLoading={isLoading}
         />
       </div>

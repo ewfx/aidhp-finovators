@@ -4,8 +4,6 @@ import pandas as pd
 import ollama
 from functools import lru_cache
 
-import yaml
-
 # Load Excel sheets into DataFrames at the start (to avoid re-reading on every request)
 file_path = 'data/hackathon_dataset.xlsx'
 sheets_dict = pd.read_excel(file_path, sheet_name=None)
@@ -78,9 +76,9 @@ def generate_summary(custid):
 
 # Flask APIs to manage the workflow
 from flask import Flask, request, jsonify
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/preload-summary', methods=['POST'])
 def preload_summary():
     data = request.json
@@ -121,6 +119,8 @@ def get_offers():
 
     except Exception as e:
         return jsonify({"error": f"Ollama API call failed: {e}"}), 500
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
