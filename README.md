@@ -66,13 +66,22 @@ Screenshot3-https://drive.google.com/file/d/1uOFxo6gdBlm6-MeEUvAaqJGK1NFtqlg5/vi
    sh
    git clone https://github.com/ewfx/aidhp-finovators.git
    
-2. *Install dependencies*  
-   sh
-   npm install  # or pip install -r requirements.txt (for Python)
-   
-3. *Run the project*  
-   sh
-   npm start  # or python app.py
+2. *Install dependencies and run the app*
+### Backend
+  ```
+cd code/src/backend
+pip install -r requirements.txt
+ollama create bankingmodel -f{ModeFile} #ModelFile is in backend directory
+python app.py
+ ```
+
+### Frontend
+```
+cd code/src/frontend
+npm install
+npm run dev
+```
+ 
    
 
 ## 🏗️ Tech Stack
@@ -84,4 +93,4 @@ Screenshot3-https://drive.google.com/file/d/1uOFxo6gdBlm6-MeEUvAaqJGK1NFtqlg5/vi
 ## 👥 Team
 - Ananditaa H - https://github.com/ananditaa | https://www.linkedin.com/in/ananditaa-h-7b1387209/
 - Yuvan Shankar - [GitHub](#) | [LinkedIn](#)
-- Ram Ganesh -
+- Ram Ganesh - [GitHub](https://github.com/Ram-20062003) | [LinkedIn](https://www.linkedin.com/in/ram-ganesh-k-r-0796a121b/)
