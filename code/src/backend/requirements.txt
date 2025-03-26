@@ -1,0 +1,6 @@
+pandas
+firebase-admin
+Flask
+Flask-Cors
+ollama
+openpyxl  # Required for reading Excel sheets with Pandas
