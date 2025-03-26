@@ -4,21 +4,36 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
 	const [isLogin, setIsLogin] = useState(true);
 	const [isOrgLogin, setIsOrgLogin] = useState(false);
-	const [email, setEmail] = useState('');
+	const [custId, setCustId] = useState('');
 	const [password, setPassword] = useState('');
 	const [failed, setFailed] = useState(false);
 	const nav = useNavigate();
 
+	
+	const handleOnLoad = async () => {
+		try {
+		  const resp = await axios.post("http://127.0.0.1:5000/preload-summary", {
+			custid: custId,
+		  });
+		  sessionStorage.setItem("custId", custId);
+		  console.log("Summary Loaded:", resp.data);
+		} catch (error) {
+		  console.error("Error loading summary:", error);
+		}
+	}	
+		
+
     const handleClick = async () => {
 		try {
 		  const resp = await axios.post("http://127.0.0.1:5000/signup", {
-			custid: email,
+			custid: custId,
 			password: password
 		  });
 		  console.log("Summary Loaded:", resp.data, resp.status);
 		  if(resp.status === 200){
-             nav('/')
+             nav('/chat')
 		  }
+		  handleOnLoad();
 		} catch (error) {
 		  console.error("Error loading summary:", error);
 		  if(error.response.status === 401){
@@ -39,11 +54,11 @@ const Login = () => {
 				{/* Inputs */}
 				<div className="flex flex-col items-center justify-center">
 					<input
-					    onChange={(e) => setEmail(e.target.value)}
-						value={email}
+					    onChange={(e) => setCustId(e.target.value)}
+						value={custId}
 						type="email"
 						className="rounded-2xl px-2 py-1 w-4/5 md:w-full border-[1px] border-black m-1 focus:shadow-md focus:border-pink-400 focus:outline-none focus:ring-0"
-						placeholder="Email"
+						placeholder="Customer ID"
 					></input>
 					<input
 					    onChange={(e) => setPassword(e.target.value)}
