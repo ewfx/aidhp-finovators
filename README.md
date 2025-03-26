@@ -14,7 +14,10 @@
 ---
 
 ## 🎯 Introduction
-A brief overview of your project and its purpose. Mention which problem statement are your attempting to solve. Keep it concise and engaging.
+- The *AI-Driven Customer Insights Platform* is designed to help financial institutions better understand their customers through AI-powered analytics.
+- *Problem Statement*: Traditional customer analysis methods are slow, inefficient, and lack personalization. Banks and financial institutions struggle to offer customized services due to limited insights from customer data.
+- *Our Solution*: We leverage AI models to analyze transaction history, social media sentiment, and other data points to generate personalized banking insights and recommendations.
+
 
 ## 🎥 Demo
 🔗 [Live Demo](#) (if applicable)  
@@ -22,39 +25,63 @@ A brief overview of your project and its purpose. Mention which problem statemen
 🖼️ Screenshots:
 
 ![Screenshot 1](link-to-image)
+Screenshot1-https://drive.google.com/file/d/1xlTzBJ1VtrXBbPCu1q8tfdEey_ehHPHY/view?usp=sharing
+Screenshot2-https://drive.google.com/file/d/1PKOrHcccSeY2-Hb96FY_i1WAgP7UhNu3/view?usp=sharing
+Screenshot3-https://drive.google.com/file/d/1uOFxo6gdBlm6-MeEUvAaqJGK1NFtqlg5/view?usp=sharing
 
 ## 💡 Inspiration
-What inspired you to create this project? Describe the problem you're solving.
+- The idea originated from the *growing demand for personalized banking experiences*.
+- Customers want tailored financial advice, but banks struggle to process large amounts of unstructured data efficiently.
+- Inspired by AI advancements, we sought to build a system that transforms raw customer data into *actionable insights*.
+- The goal is to enhance customer satisfaction while *optimizing bank revenue through better-targeted services*.
 
 ## ⚙️ What It Does
-Explain the key features and functionalities of your project.
+- *Customer Segmentation*: Groups customers based on spending patterns, demographics, and behavior.
+- *Personalized Offers*: AI-generated banking offers tailored to individual customer needs.
+- *Transaction Analysis*: Identifies spending trends and provides insights on financial habits.
+- *Sentiment Analysis*: Uses social media data to understand customer sentiment toward financial products.
+- *Real-time Insights*: Provides instant recommendations based on customer interactions.
 
 ## 🛠️ How We Built It
-Briefly outline the technologies, frameworks, and tools used in development.
+- *Backend Development*:
+  - Built using *Python* to handle API requests and process customer data.
+  - Uses *Pandas and NumPy* for data cleaning and transformation.
+  - *Caching with @lru_cache* to improve performance when loading customer data.
+- *AI Model*:
+  - *Ollama AI model* trained to analyze transaction history and customer preferences.
+  - Pre-trained on financial datasets for accurate predictions.
+- *Frontend*:
+  - Uses *React* for an interactive UI.
 
 ## 🚧 Challenges We Faced
-Describe the major technical or non-technical challenges your team encountered.
+- *Data Handling*: Processing large transaction datasets efficiently without performance bottlenecks.
+  - *Solution*: Used caching and optimized data processing pipelines.
+- *AI Model Accuracy*: Training the model to generate meaningful insights without bias.
+  - *Solution*: Used diverse datasets and continuous model fine-tuning.
+- *Deployment & Scaling*: Ensuring the system remains responsive under heavy loads.
+  - *Solution*: Implemented cloud-based autoscaling and load balancing.
 
 ## 🏃 How to Run
-1. Clone the repository  
-   ```sh
-   git clone https://github.com/your-repo.git
-   ```
-2. Install dependencies  
-   ```sh
+1. *Clone the repository*  
+   sh
+   git clone https://github.com/ewfx/aidhp-finovators.git
+   
+2. *Install dependencies*  
+   sh
    npm install  # or pip install -r requirements.txt (for Python)
-   ```
-3. Run the project  
-   ```sh
+   
+3. *Run the project*  
+   sh
    npm start  # or python app.py
-   ```
+   
 
 ## 🏗️ Tech Stack
-- 🔹 Frontend: React / Vue / Angular
-- 🔹 Backend: Node.js / FastAPI / Django
-- 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API / Twilio / Stripe
+- 🔹 Frontend: React 
+- 🔹 Backend: Python
+- 🔹 Database: Firebase
+- 🔹 AI Model: Ollama
 
 ## 👥 Team
-- **Your Name** - [GitHub](#) | [LinkedIn](#)
-- **Teammate 2** - [GitHub](#) | [LinkedIn](#)
+- Ananditaa H - https://github.com/ananditaa | https://www.linkedin.com/in/ananditaa-h-7b1387209/
+- Yuvan Shankar - [GitHub](#) | [LinkedIn](#)
+- Ram Ganesh -
