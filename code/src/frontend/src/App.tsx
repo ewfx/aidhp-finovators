@@ -4,6 +4,7 @@ import { Chat } from './pages/chat/chat'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext'
 import Login from './pages/login';
+import Dashboard from './pages/dashboard';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Chat />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/dashboard" element={<Dashboard />} />
 					</Routes>
 				</div>
 			</Router>
