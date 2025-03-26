@@ -7,12 +7,14 @@ import { Overview } from "@/components/custom/overview";
 import { Header } from "@/components/custom/header";
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'; // Replaced fetch with axios for consistency
+import useSpeechRecognition from "@/hooks/useSpeechRecognition";
 
 export function Chat() {
   const [messagesContainerRef, messagesEndRef] = useScrollToBottom<HTMLDivElement>();
   const [messages, setMessages] = useState<message[]>([]);
   const [question, setQuestion] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  
 
   // Load summary when the component is first rendered
   
