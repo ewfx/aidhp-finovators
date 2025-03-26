@@ -43,7 +43,7 @@ def create_ollama_model(custid, summary):
         )
 
         # Cache the model name after successful creation
-        preloaded_summaries[custid] = model_name
+        preloaded_summaries[custid] = summary
 
     except Exception as e:
         print(f"Error creating Ollama model for Customer {custid}: {e}")
@@ -198,7 +198,7 @@ def get_summary():
     try:
         stream = ollama.chat(
             model=f"cust_{custid}_summary",
-            messages=[{"role": "user", "content": "Give a very short summary of the customers profile in 6 words, transaction in 6 words and his preferences."}],
+            messages=[{"role": "user", "content": "Give a very short summary of the customers profile in 6 words, recent purchase in one line with product, payment mode and price and his preferences."}],
             format= CustomerSummary.model_json_schema(),
             stream=True,
         )

@@ -31,7 +31,7 @@ const Login = () => {
 		  });
 		  console.log("Summary Loaded:", resp.data, resp.status);
 		  if(resp.status === 200){
-             nav('/chat')
+             nav('/dashboard')
 		  }
 		  handleOnLoad();
 		} catch (error) {
