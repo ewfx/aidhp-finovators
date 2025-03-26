@@ -15,19 +15,7 @@ export function Chat() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Load summary when the component is first rendered
-  useEffect(() => {
-    const handleOnLoad = async () => {
-      try {
-        const resp = await axios.post("http://127.0.0.1:5000/preload-summary", {
-          custid: "CUST2025A0",
-        });
-        console.log("Summary Loaded:", resp.data);
-      } catch (error) {
-        console.error("Error loading summary:", error);
-      }
-    };
-    handleOnLoad();
-  }, []);
+  
 
   // Function to handle user input and get offers from the backend
   const handleOnSubmit = async (text?: string) => {
@@ -42,7 +30,7 @@ export function Chat() {
 
     try {
       const resp = await axios.post("http://127.0.0.1:5000/get-offers", {
-        custid: "CUST2025A0",
+        custid: sessionStorage.getItem('custId'),
         user_input: messageText,
       });
 
