@@ -6,7 +6,8 @@ from functools import lru_cache
 import firebase_admin
 from firebase_admin import credentials, db
 
-
+from pydantic import BaseModel
+import json
 
 
 
@@ -157,6 +158,61 @@ def signup():
 
     except Exception as e:
         return jsonify({"error": f"Firebase database error: {e}"}), 500
+
+@app.route('/get-ads', methods=['POST'])
+def get_ads():
+    data = request.json
+    custid = data.get("custid")
+
+    if not custid:
+        return jsonify({"error": "Customer ID is required"}), 400
+
+    try:
+        stream = ollama.chat(
+            model=f"cust_{custid}_summary",
+            messages=[{"role": "user", "content": "Consider yourselves as bank and provided us what kind of offers can you provide based on my recent purchases and social media interactions and revenue.You can also suggest wealth management strategies incase the income is above 100000.Make the response with title and a description with 10 words."}],
+            stream=True,
+        )
+        response_content = ""
+        for message in stream:
+            response_content += message["message"]["content"]
+        response = response_content.split("\n")
+
+        return jsonify({"ads": response_content})
+
+    except Exception as e:
+        return jsonify({"error": f"Ollama API call failed: {e}"}),500
+    
+class CustomerSummary(BaseModel):
+    customer: str
+    transaction: str
+    likings: str
+
+@app.route('/get-summary', methods=['POST'])
+def get_summary():
+    data = request.json
+    custid = data.get("custid")
+
+    if not custid:
+        return jsonify({"error": "Customer ID is required"}), 400
+    try:
+        stream = ollama.chat(
+            model=f"cust_{custid}_summary",
+            messages=[{"role": "user", "content": "Give a very short summary of the customers profile in 6 words, transaction in 6 words and his preferences."}],
+            format= CustomerSummary.model_json_schema(),
+            stream=True,
+        )
+
+        response_content = ""
+        for message in stream:
+            response_content += message["message"]["content"]
+        print(json.loads(response_content))
+        return jsonify({"about": json.loads(response_content)})
+
+    except Exception as e:
+        return jsonify({"error": f"Ollama API call failed: {e}"}),500
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
