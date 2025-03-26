@@ -92,5 +92,5 @@ npm run dev
 
 ## 👥 Team
 - Ananditaa H - https://github.com/ananditaa | https://www.linkedin.com/in/ananditaa-h-7b1387209/
-- Yuvan Shankar - [GitHub](#) | [LinkedIn](#)
+- Yuvan Shankar - [[GitHub](#) ](https://github.com/Ysr2411)| [LinkedIn](#)
 - Ram Ganesh - [GitHub](https://github.com/Ram-20062003) | [LinkedIn](https://www.linkedin.com/in/ram-ganesh-k-r-0796a121b/)
