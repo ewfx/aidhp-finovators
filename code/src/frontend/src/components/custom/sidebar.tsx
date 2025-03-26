@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { PlusCircle, MessageCircle, X, Trash2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/libs/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface SidebarProps {

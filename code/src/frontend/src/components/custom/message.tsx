@@ -5,7 +5,7 @@ import { SparklesIcon } from './icons';
 import { Markdown } from './markdown';
 import { message } from "../../interfaces/interfaces"
 import { MessageActions } from '@/components/custom/actions';
-
+import BeatLoader from "react-spinners/BeatLoader";
 export const PreviewMessage = ({ message }: { message: message; }) => {
 
   return (
@@ -59,8 +59,9 @@ export const ThinkingMessage = () => {
         )}
       >
         <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border">
-          <SparklesIcon size={14} />
+         <SparklesIcon size={14} /> 
         </div>
+        <div> <BeatLoader size={'10'} /> </div>
       </div>
     </motion.div>
   );
