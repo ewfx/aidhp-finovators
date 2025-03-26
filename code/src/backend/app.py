@@ -14,10 +14,32 @@ social_media_df = sheets_dict['Social Media sentiment'].set_index('Customer_Id')
 # In-memory cache for preloaded customer summaries
 preloaded_summaries = {}
 
+def create_ollama_model_for_offers(custid, summary):
+    try:
+        model_content = (
+            f"### System\nUse this summary to understand the customer  .\n\n"
+            f"{summary}\n\n### User\nUse this summary as reference for any other queries.\n"
+            f"Consider your role as a Wells Fargo banking advisor for the customer, who will be helping with doubts and providing offers and suggestions that the bank has."
+        )
+        model_name = f"cust_{custid}_summary"
+
+        # Create the model dynamically using Ollama
+        ollama.create(
+            model=model_name,
+            from_='bankingmodel',
+            system=model_content
+        )
+
+        # Cache the model name after successful creation
+        preloaded_summaries[custid] = model_name
+
+    except Exception as e:
+        print(f"Error creating Ollama model for Customer {custid}: {e}")
+
 def create_ollama_model(custid, summary):
     try:
         model_content = (
-            f"### System\nUse this summary to understand the customer.\n\n"
+            f"### System\nUse this summary to understand the customer and you are a wells fargo banking advisor for the customer who will be helping in his doubts and giving him the offers and suggesstions that bank has .\n\n"
             f"{summary}\n\n### User\nUse this summary as reference for any other queries.\n"
         )
         model_name = f"cust_{custid}_summary"
