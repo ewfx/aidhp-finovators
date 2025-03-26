@@ -41,6 +41,7 @@ Screenshot3-https://drive.google.com/file/d/1uOFxo6gdBlm6-MeEUvAaqJGK1NFtqlg5/vi
 - *Transaction Analysis*: Identifies spending trends and provides insights on financial habits.
 - *Sentiment Analysis*: Uses social media data to understand customer sentiment toward financial products.
 - *Real-time Insights*: Provides instant recommendations based on customer interactions.
+- *Speech-recognition*: Enables users to send queries through real-time voice input. 
 
 ## 🛠️ How We Built It
 - *Backend Development*:
@@ -52,6 +53,7 @@ Screenshot3-https://drive.google.com/file/d/1uOFxo6gdBlm6-MeEUvAaqJGK1NFtqlg5/vi
   - Pre-trained on financial datasets for accurate predictions.
 - *Frontend*:
   - Uses *React* for an interactive UI.
+  - Uses react speech recognition to enable users to send queries through real-time voice input. 
 
 ## 🚧 Challenges We Faced
 - *Data Handling*: Processing large transaction datasets efficiently without performance bottlenecks.
