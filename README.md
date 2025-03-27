@@ -74,6 +74,7 @@ Screenshot3-https://drive.google.com/file/d/1uOFxo6gdBlm6-MeEUvAaqJGK1NFtqlg5/vi
 cd code/src/backend
 pip install -r requirements.txt
 ollama create bankingmodel -f{ModeFile} #ModelFile is in backend directory
+ollama run bankingmodel
 python app.py
  ```
 
